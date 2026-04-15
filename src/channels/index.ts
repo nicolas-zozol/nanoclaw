@@ -5,6 +5,12 @@
 
 // gmail
 
+// imap (generic IMAP/SMTP: Zoho, iCloud, Yahoo, mailbox.org, ...)
+import './imap.js';
+
+// outlook
+import './outlook.js';
+
 // slack
 import './slack.js';
 

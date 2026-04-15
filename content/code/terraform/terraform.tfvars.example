@@ -1,0 +1,20 @@
+# Copy this to terraform.tfvars and fill in.
+# terraform.tfvars is gitignored — never commit it.
+
+# Required
+owner          = "nicolas-zozol"
+ssh_public_key = "ssh-ed25519 AAAA... your_key_here"
+
+# Optional — override defaults
+# aws_region          = "eu-west-3"     # Paris
+# instance_type       = "t4g.small"     # ARM, 2 vCPU, 2 GiB (~$12/mo)
+# root_volume_size_gb = 20
+# swap_size_gb        = 2               # cushions agent-container RAM spikes
+# install_postgres    = true            # local PG 16 on 127.0.0.1
+
+# SECURITY: restrict SSH to your IP. Find it with: curl -4 ifconfig.me
+# ssh_ingress_cidrs = ["203.0.113.42/32"]
+
+# timezone   = "Europe/Paris"
+# assign_eip = true
+# enable_ssm = true

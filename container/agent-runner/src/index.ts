@@ -33,6 +33,7 @@ interface ContainerInput {
   isScheduledTask?: boolean;
   assistantName?: string;
   script?: string;
+  model?: string;
 }
 
 interface ContainerOutput {
@@ -438,6 +439,10 @@ async function runQuery(
   for await (const message of query({
     prompt: stream,
     options: {
+      // Per-group model override (set via containerConfig.model in the DB).
+      // Undefined → SDK default (respects ANTHROPIC_MODEL env or falls back
+      // to the SDK's built-in default).
+      model: containerInput.model,
       cwd: '/workspace/group',
       additionalDirectories: extraDirs.length > 0 ? extraDirs : undefined,
       resume: sessionId,

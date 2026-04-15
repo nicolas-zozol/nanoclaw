@@ -43,6 +43,9 @@ export interface ContainerInput {
   isScheduledTask?: boolean;
   assistantName?: string;
   script?: string;
+  // Optional per-group Claude model override. If unset, the container
+  // uses the SDK default (which itself respects ANTHROPIC_MODEL env).
+  model?: string;
 }
 
 export interface ContainerOutput {

@@ -25,6 +25,16 @@ Single Node.js process with skill-based channel system. Channels (WhatsApp, Tele
 
 API keys, secret keys, OAuth tokens, and auth credentials are managed by the OneCLI gateway — which handles secret injection into containers at request time, so no keys or tokens are ever passed to containers directly. Run `onecli --help`.
 
+## Before `/clear` — persist local tools added during the session
+
+If during a session you install a local CLI that isn't an MCP (e.g. `brew install agent-browser`, `npm install -g something`) or discover a host-level tool that matters for this project, **update `~/.claude/projects/-Users-nicolaszozol-code-massivoto-nanoclaw/memory/reference_local_tools.md`** before the user runs `/clear`. These tools are invisible to the next session unless documented there:
+
+- The binary path persists on disk (Homebrew, npm global, etc.)
+- But Claude does NOT auto-scan `$PATH` at session start
+- Without a memory entry, the next session will assume the tool doesn't exist and may try to reinstall or suggest alternatives
+
+For every new local tool, record: binary path, purpose, common commands, known gotchas, and whether auth/state is already set up.
+
 ## Skills
 
 Four types of skills exist in NanoClaw. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full taxonomy and guidelines.
